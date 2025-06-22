@@ -57,7 +57,7 @@ exports.borrowRoutes.post('', (req, res) => __awaiter(void 0, void 0, void 0, fu
     }
 }));
 exports.borrowRoutes.get('', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const borrow = yield borrow_model_1.Borrow.aggregate([
+    const summary = yield borrow_model_1.Borrow.aggregate([
         {
             $group: {
                 _id: '$book',
@@ -88,6 +88,6 @@ exports.borrowRoutes.get('', (req, res) => __awaiter(void 0, void 0, void 0, fun
     res.status(201).json({
         success: true,
         message: "Borrowed books retrieved successfully",
-        borrow
+        summary
     });
 }));
