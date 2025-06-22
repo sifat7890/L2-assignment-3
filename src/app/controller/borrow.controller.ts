@@ -63,7 +63,7 @@ borrowRoutes.get('', async (req: Request, res: Response) => {
 
 
 
-    const borrow = await Borrow.aggregate([
+    const summary  = await Borrow.aggregate([
         {
             $group: {
                 _id: '$book',
@@ -97,7 +97,7 @@ borrowRoutes.get('', async (req: Request, res: Response) => {
     res.status(201).json({
         success: true,
         message: "Borrowed books retrieved successfully",
-        borrow
+        summary 
     })
 
 })
