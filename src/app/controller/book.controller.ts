@@ -4,7 +4,7 @@ import { Book } from '../model/book.model';
 
 export const booksRoutes = express.Router();
 
-booksRoutes.post('', async (req: Request, res: Response) => {
+booksRoutes.post('/create-book', async (req: Request, res: Response) => {
     try {
         const body = req.body;
         const book = await Book.create(body);
@@ -27,7 +27,7 @@ booksRoutes.post('', async (req: Request, res: Response) => {
 
 
 
-booksRoutes.get('', async (req: Request, res: Response) => {
+booksRoutes.get('/books', async (req: Request, res: Response) => {
 
     try {
         const bookGenre = req.query.filter ? req.query.filter : "";
@@ -62,8 +62,8 @@ booksRoutes.get('', async (req: Request, res: Response) => {
 })
 
 
-booksRoutes.get('/:bookId', async (req: Request, res: Response) => {
-    const bookId = req.params.bookId;
+booksRoutes.get('/books/:id', async (req: Request, res: Response) => {
+    const bookId = req.params.id;
     const books = await Book.findById(bookId);
     res.status(201).json({
         success: true,
@@ -73,8 +73,8 @@ booksRoutes.get('/:bookId', async (req: Request, res: Response) => {
 })
 
 
-booksRoutes.patch('/:bookId', async (req: Request, res: Response) => {
-    const bookId = req.params.bookId;
+booksRoutes.patch('/edit-book/:id', async (req: Request, res: Response) => {
+    const bookId = req.params.id;
     const updatedBody = req.body;
     const book = await Book.findByIdAndUpdate(bookId, updatedBody, { new: true });
 
@@ -85,7 +85,7 @@ booksRoutes.patch('/:bookId', async (req: Request, res: Response) => {
     })
 })
 
-booksRoutes.delete('/:bookId', async (req: Request, res: Response) => {
+booksRoutes.delete('/books/:bookId', async (req: Request, res: Response) => {
 
     const bookId = req.params.bookId;
     const book = await Book.findByIdAndDelete(bookId);

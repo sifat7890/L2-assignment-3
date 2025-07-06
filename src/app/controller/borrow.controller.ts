@@ -6,7 +6,7 @@ import { Book } from '../model/book.model';
 
 export const borrowRoutes = express.Router();
 
-borrowRoutes.post('', async (req: Request, res: Response) => {
+borrowRoutes.post('/borrow', async (req: Request, res: Response) => {
     try {
 
         const body = req.body;
@@ -59,7 +59,7 @@ borrowRoutes.post('', async (req: Request, res: Response) => {
 
 
 
-borrowRoutes.get('', async (req: Request, res: Response) => {
+borrowRoutes.get('/borrow', async (req: Request, res: Response) => {
 
 
 
