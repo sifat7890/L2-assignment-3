@@ -16,7 +16,7 @@ app.get('/', (req: Request, res: Response) => {
 })
 app.use(
   cors({
-    origin: 'http://localhost:5173'
+    origin: 'https://l2-assignment-4-psi.vercel.app'
    })
 );
 
